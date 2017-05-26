@@ -318,14 +318,15 @@ BoldItalicFont=timesbi.ttf
   \end{center}
   \vspace{0.5in}
   {\linespacing{1.5}
-  本人声明所呈交的毕业（设计）论文是我个人在导师指导下进行的研究工作及取得的研究成果。
+  \qquad 本人声明所呈交的毕业（设计）论文是我个人在导师指导下进行的研究工作及取得的研究成果。
   尽我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，
   也不包含为获得东南大学或其它教育机构的学位或证书而使用过的材料。
   与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示了谢意。
   \par}
   \vspace{0.3in}
   \begin{flushright}
-  论文作者签名：\signline ~~ 日~期：\signline
+  作者签名：\signline \\
+  日~期：\signline
   \end{flushright}
   \vspace{1.5in}
   \begin{center}
@@ -333,13 +334,15 @@ BoldItalicFont=timesbi.ttf
   \end{center}
   \vspace{0.5in}
   {\linespacing{1.5}
-  东南大学有权保留本人所送交毕业（设计）论文的复印件和电子文档，可以采用影印、缩印或其他复制手段保存论文。
+  \qquad 东南大学有权保留本人所送交毕业（设计）论文的复印件和电子文档，可以采用影印、缩印或其他复制手段保存论文。
   本人电子文档的内容和纸质论文的内容相一致。除在保密期内的保密论文外，允许论文被查阅和借阅，
   可以公布（包括刊登）论文的全部或部分内容。论文的公布（包括刊登）授权东南大学教务处办理。
   \par}
   \vspace{0.3in}
   \begin{flushright}
-  论文作者签名：\signline ~~ 导师签名：\signline ~~ 日~期：\signline
+  作者签名：\signline \\
+  导师签名：\signline \\
+  日~期：\signline
   \end{flushright}
   \par}
   \frontmatter
@@ -632,18 +635,17 @@ BoldItalicFont=timesbi.ttf
   \addcontentsline{toc}{chapter}{\@abstracttitletoc}
   \ifbachelordegree
   \renewcommand{\newtitleline}{\\}
-  % \chapter*{\@title}
-  % \begin{flushright}
-  %   \begin{tabular}[h]{ll}
-  %     \@studentid & \kai\@author \\
-  %     \advisorpre & \kai\@advisorname \\
-  %   \end{tabular}
-  % \end{flushright}
-  \ \\ \\
+  \chapter*{\@title}
+  \begin{flushright}
+    \begin{tabular}[h]{ll}
+      \@studentid & \kai\@author \\
+      \advisorpre & \kai\@advisorname \\
+    \end{tabular}
+  \end{flushright}
   \begin{center}
     \Large \hei\@abstracttitle
   \end{center}
-  \par \ \\ \par
+  \par
   \else
   \chapter*{\@abstracttitle}
   \fi
@@ -669,18 +671,17 @@ BoldItalicFont=timesbi.ttf
   \phantomsection
   \addcontentsline{toc}{chapter}{Abstract}
   \ifbachelordegree
-  % \chapter*{\@titleeng}
-  % \begin{flushright}
-  %   \begin{tabular}[h]{l}
-  %     \@studentid \qquad \@authoreng \\
-  %     \@advisornameeng \\
-  %   \end{tabular}
-  % \end{flushright}
-  \ \\ \\
+  \chapter*{\textbf{\@titleeng}}
+  \begin{flushright}
+    \begin{tabular}[h]{l}
+      \@studentid \qquad \@authoreng \\
+      \@advisornameeng \\
+    \end{tabular}
+  \end{flushright}
   \begin{center}
-    {\Large Abstract}
+    {\Large \textbf{Abstract}}
   \end{center}
-  \par \ \\ \par
+  \par
   \else
   \chapter*{Abstract}
   \fi
