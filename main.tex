@@ -1,5 +1,18 @@
 %!TEX program = xelatex
 
+% Just SHUT UP
+\RequirePackage{silence}
+\WarningFilter{scrbook}{Usage of package `titlesec'}
+\WarningFilter{scrbook}{Activating an ugly workaround}
+\WarningFilter{titlesec}{Non standard sectioning command detected}
+\WarningFilter{hyperref}{Token not allowed in a PDF string}
+\WarningFilter{scrbook}{discard change of}
+\WarningFilter{scrbook}{\float@addtolists detected!}
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Some font}
+\WarningFilter{latexfont}{Size substitutions}
+\WarningFilter{latex}{Command \selectfont   has changed.}
+
 \documentclass[bachelor,printoneside]{seuthesis} % 本科
 % \documentclass[master]{seuthesis} % 硕士
 % \documentclass[doctor]{seuthesis} % 博士
@@ -14,9 +27,10 @@
 \floatname{algorithm}{算法}
 \renewcommand{\algorithmicrequire}{\textbf{输入:}}
 \renewcommand{\algorithmicensure}{\textbf{输出:}}
- % 这里是导言区
+% 这里是导言区
+\newcommand{\grad}{$^{\circ}$C}
 
- \titleformat{\subsection}{\centering\Huge\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsection}{\centering\Huge\bfseries}{\thesubsection}{1em}{}
 
 \begin{document}
 \categorynumber{000} % 分类采用《中国图书资料分类法》
@@ -39,7 +53,6 @@
 \thanks{本论文获国家XXX计划项目（2012AA00A00）和国家杰出青年科学基金项目（01234567）资助。}
 \maketitle
 
-\pagestyle{seustyle}
 \begin{abstract}{希腊字母，腓尼基字母，语言，深度学习}
 希腊字母源自腓尼基字母。腓尼基字母只有辅音，从右向左写。希腊语的元音发达，希腊人增添了元音字母。因为希腊人的书写工具是蜡板，有时前一行从右向左写完后顺势就从左向右写，变成所谓“耕地”式书写，后来逐渐演变成全部从左向右写。字母的方向也颠倒了。罗马人引进希腊字母，略微改变变为拉丁字母，在世界广为流行。希腊字母广泛应用到学术领域，如数学等。
 
@@ -53,25 +66,6 @@ In its classical and modern forms, the alphabet has 24 letters, ordered from alp
 \end{englishabstract}
 
 \tableofcontents
-
-\begin{terminology}
-\begin{table}[h]
-\renewcommand\arraystretch{1.5}
-%\Large
-\begin{tabular}{>{\LARGE}m{0.2\textwidth} <{\centering}m{0.7\textwidth}}
-a & 如同汉字起源于象形，拉丁字母表中的每个字母一开始都是描摹某种动物或物体形状的图画\\
-
-b&和A一样，字母B也可以追溯到古代腓尼基。在腓尼基字母表中B叫beth,代表房屋，在希伯来语中B也叫beth，也含房屋之意。\\
-
-c& 字母C在腓尼基人的文字中叫gimel，代表骆驼。它在字母表中的排列顺序和希腊字母Γ(gamma)相同，实际上其字形是从后者演变而来的。C在罗马数字中表示100。\\
-
-d&D在古时是描摹拱门或门的形状而成的象形符号，在古代腓尼基语和希伯来语中叫做daleth，是“门”的意思，相当于希腊字母Δ（delta）。\\
-
-\end{tabular}
-%\caption{my table}
-\end{table}
-
-\end{terminology}
 
 \begin{Main} % 开始正文
 
@@ -167,8 +161,22 @@ d&D在古时是描摹拱门或门的形状而成的象形符号，在古代腓�
 \bibliography{seuthesis}
 
 \begin{Appendix}
-  \chapter{第一个附录}
-  ……
+\chapter{本论文专用术语的注释表}
+\begin{table}[h]
+\renewcommand\arraystretch{1.5}
+%\Large
+\begin{tabular}{>{\LARGE}m{0.2\textwidth} <{\centering}m{0.7\textwidth}}
+a & 如同汉字起源于象形，拉丁字母表中的每个字母一开始都是描摹某种动物或物体形状的图画\\
+
+b&和A一样，字母B也可以追溯到古代腓尼基。在腓尼基字母表中B叫beth,代表房屋，在希伯来语中B也叫beth，也含房屋之意。\\
+
+c& 字母C在腓尼基人的文字中叫gimel，代表骆驼。它在字母表中的排列顺序和希腊字母Γ(gamma)相同，实际上其字形是从后者演变而来的。C在罗马数字中表示100。\\
+
+d&D在古时是描摹拱门或门的形状而成的象形符号，在古代腓尼基语和希伯来语中叫做daleth，是“门”的意思，相当于希腊字母Δ（delta）。\\
+
+\end{tabular}
+%\caption{my table}
+\end{table}
 \end{Appendix}
 
 \begin{Acknowledgement}

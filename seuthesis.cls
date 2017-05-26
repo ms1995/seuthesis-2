@@ -5,22 +5,22 @@
 %% The original source files were:
 %%
 %% seuthesis.dtx  (with options: `cls')
-%% 
+%%
 %% Copyright (C) 2007-2012 by Xu Yuan <xuyuan.cn@gmail.com>
-%% 
+%%
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a
 %% of this license or (at your option) any later version.
 %% The latest version of this license is in:
-%% 
+%%
 %% http://www.latex-project.org/lppl.txt
-%% 
+%%
 %% and version 1.3a or later is part of all distributions of LaTeX
 %% version 2004/10/01 or later.
-%% 
+%%
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
-%% 
+%%
  \NeedsTeXFormat{LaTeX2e}[1999/12/01]
  \ProvidesClass{seuthesis}[2012/04/19 2.1.2 The LaTeX template for thesis of Southeast University]
  \typeout{Document Class `seuthesis' v2.1.2 by Xu Yuan, Song Yihan, Huang Xiaoyu (2012/04/19)}
@@ -45,12 +45,10 @@
 \ProcessOptions
 \LoadClass[a4paper,captions=tableheading]{scrbook}
 \let\todayeng\today
-
-% my change
-\RequirePackage{lmodern}
 \RequirePackage{doc}
 \RequirePackage{keyval}
 \RequirePackage{ifthen}
+
 \RequirePackage{xltxtra}
 \RequirePackage{graphicx}
 \RequirePackage[dvipsnames]{xcolor}
@@ -68,21 +66,15 @@
 \RequirePackage{paralist}% 修改列表格式
 \setdefaultenum{1)}{a)}{i.}{A.}% 设置列表模式
 \setdefaultleftmargin{4ex}{}{}{}{}{}
-\RequirePackage[CJKnumber,slantfont,boldfont]{xeCJK}
-\RequirePackage{CJKulem}
-
-% my change
-\RequirePackage{ulem}
-
-% my change
-%\def\CJK@spaceChar{\hskip \f@size \p@}
+\RequirePackage[UTF8,scheme=plain]{ctex}
+\RequirePackage{CJKnumb}
+\newlength\CJK@twochars
+%\def\CJK@spaceChar{\Unicode{48}{7}}
+\def\CJK@spaceChar{\hskip \f@size \p@}
 \def\CJKindent{%
-    %\settowidth\CJK@twochars{\CJK@spaceChar\CJK@spaceChar}
-    % \parindent\CJK@twochars
-    \setlength{\parindent}{2em}
-    }
+    \settowidth\CJK@twochars{\CJK@spaceChar\CJK@spaceChar}%
+    \parindent\CJK@twochars}
 
-% my change
 \DeclareCaptionFont{capFont}{\song\wuhao} % 表格名及图名用5号宋体
 \DeclareCaptionLabelSeparator{twospace}{~~}
 \captionsetup{
@@ -109,7 +101,14 @@
 \RequirePackage{titletoc} % 设置目录
 \hypersetup{bookmarksnumbered=true}%书签中章节编号
 \defaultfontfeatures{Mapping=tex-text} % --- as em-dash
-\setCJKmainfont[Path = ./font/]{simsun.ttf}
+
+% 修改中文字体族，增加黑体
+\setCJKmainfont[
+Path = ./font/,
+BoldFont=simhei.ttf,
+ItalicFont=simkai.ttf,
+BoldItalicFont=simfang.ttf
+]{simsun.ttf}
 \setCJKfamilyfont{zhsong}[Path = ./font/]{simsun.ttf}
 \newcommand{\song}{\CJKfamily{zhsong}}
 \setCJKfamilyfont{zhhei}[Path = ./font/]{simhei.ttf}
@@ -126,6 +125,18 @@ BoldFont=timesbd.ttf,
 ItalicFont=timesi.ttf,
 BoldItalicFont=timesbi.ttf
 ]{times.ttf}
+
+%\setCJKmainfont{SimSun}
+%\setCJKfamilyfont{zhsong}{SimSun}
+%\newcommand{\song}{\CJKfamily{zhsong}}
+%\setCJKfamilyfont{zhhei}{SimHei}
+%\newcommand{\hei}{\CJKfamily{zhhei}}
+%\setCJKfamilyfont{zhkai}{KaiTi_GB2312}
+%\newcommand{\kai}{\CJKfamily{zhkai}}
+%\setCJKfamilyfont{zhfs}{FangSong_GB2312}
+%\newcommand{\fs}{\CJKfamily{zhfs}}
+
+%\setmainfont{Times New Roman}% 英文默认Time New Roman
 
 \newcommand{\chuhao}{\fontsize{42pt}{46pt}\selectfont}
 \newcommand{\xiaochuhao}{\fontsize{36pt}{40pt}\selectfont}
@@ -146,11 +157,7 @@ BoldItalicFont=timesbi.ttf
 \titlespacing{\section}{0pt}{3.5ex plus .05ex minus .01ex}{2.9ex plus .04ex} % 标题间距
 \titlespacing{\subsection}{0pt}{3ex plus .05ex minus .01ex}{2ex plus .04ex}
 \titlespacing{\subsubsection}{0pt}{1.5ex plus .05ex minus .01ex}{1ex plus .01ex}
-
-%my change
-
-
-\newcommand{\linespacing}[1]{\linespread{#1}\selectfont}% 行距命令
+\newcommand{\linespacing}[1]{\linespread{#1}\selectfont}% 行距命令 \linespread{1.324}
 \newcommand{\stcleardp}{%
   \ifstoneside
   \clearpage
@@ -171,6 +178,9 @@ BoldItalicFont=timesbi.ttf
   menucolor=red,
   urlcolor=magenta
 }
+% 东南大学\@degree{}学位论文
+% \chaptertitlename\quad\chaptertitle
+% \thepage
 \newpagestyle{seustyle}{
   \sethead[][{\song{}\xiaowuhao{}东南大学2017届本科生毕业设计（论文）}][\song{}\xiaowuhao{}第\thepage 页] % 偶数页
   {}{{\song{}\xiaowuhao{}东南大学2017届本科生毕业设计（论文）}}{\song{}\xiaowuhao{}第\thepage 页} % 奇数页
@@ -180,6 +190,7 @@ BoldItalicFont=timesbi.ttf
 \newpagestyle{seufrontstyle}{
   \pagestyle{seunolabelstyle}
 }
+% \chaptertitle
 \newpagestyle{seunolabelstyle}{
   \sethead[][{\song{}\xiaowuhao{}东南大学2017届本科生毕业设计（论文）}][]
   {}{{\song{}\xiaowuhao{}东南大学2017届本科生毕业设计（论文）}}{}
@@ -187,7 +198,7 @@ BoldItalicFont=timesbi.ttf
   \headrule
 }
 \renewpagestyle{plain}{
-  \pagestyle{seunolabelstyle}
+  %\pagestyle{seunolabelstyle}
 }
 \renewcommand{\author}[2]{
   \def\@author{#1}
@@ -294,11 +305,43 @@ BoldItalicFont=timesbi.ttf
   \chinesecover
 
   \renewcommand*\frontmatter{%
-    \if@twoside\cleardoubleoddpage\else\clearpage\fi
+    %\if@twoside\cleardoubleoddpage\else\clearpage\fi % 目测对于单面设置不管用
+    \clearpage
     \@mainmatterfalse\pagenumbering{Roman}% 大写罗马字母
   }
 
   \ifbachelordegree
+  {\ \\ \\
+  \xiaosihao
+  \begin{center}
+  {\hei\sanhao 东南大学毕业（设计）论文独创性声明}
+  \end{center}
+  \vspace{0.5in}
+  {\linespacing{1.5}
+  本人声明所呈交的毕业（设计）论文是我个人在导师指导下进行的研究工作及取得的研究成果。
+  尽我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，
+  也不包含为获得东南大学或其它教育机构的学位或证书而使用过的材料。
+  与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示了谢意。
+  \par}
+  \vspace{0.3in}
+  \begin{flushright}
+  论文作者签名：\signline ~~ 日~期：\signline
+  \end{flushright}
+  \vspace{1.5in}
+  \begin{center}
+    {\hei\sanhao 东南大学毕业（设计）论文使用授权声明}
+  \end{center}
+  \vspace{0.5in}
+  {\linespacing{1.5}
+  东南大学有权保留本人所送交毕业（设计）论文的复印件和电子文档，可以采用影印、缩印或其他复制手段保存论文。
+  本人电子文档的内容和纸质论文的内容相一致。除在保密期内的保密论文外，允许论文被查阅和借阅，
+  可以公布（包括刊登）论文的全部或部分内容。论文的公布（包括刊登）授权东南大学教务处办理。
+  \par}
+  \vspace{0.3in}
+  \begin{flushright}
+  论文作者签名：\signline ~~ 导师签名：\signline ~~ 日~期：\signline
+  \end{flushright}
+  \par}
   \frontmatter
   \else
   \ifdoublecover
@@ -489,28 +532,24 @@ BoldItalicFont=timesbi.ttf
     \linespacing{1.0}
     \begin{center}
       \vspace*{20pt}
+      % \includegraphics[height=2cm]{figures/seu-badge-logo}
+      % \quad
       \includegraphics[height=2cm]{figures/seu-text-logo} \\
       \vspace*{60pt}
       \yihao\hei \bachelortitle \\
       \vspace*{60pt}
-      %{\xiaoerhao\song \titlepre}
-      % {\erhao\song \parbox[t]{18em}{\fs\uline{\hfill\@title\hfill}}} \\
-      
-      % my change
-      {\xiaoerhao\song\titlepre}
-      {\erhao\song \parbox[t]{16em}{\fs\uline{\hfill\@title\hfill}}}\\
-    
-
+      {\xiaoerhao\song \titlepre}
+      {\erhao\song \parbox[t]{18em}{\fs\uline{\hfill\@title\hfill}}} \\
       \vspace*{40pt}
       \renewcommand{\arraystretch}{1.5}
       \setlength{\tabcolsep}{0pt}
       \begin{tabular}{clcl}
         \sanhao\fs
-        \underline{\makebox[9.5em][s]{\makebox[9.5em][c]{\@department}}} &
+        \underline{\makebox[9em][s]{\makebox[9em][c]{\@department}}} &
         \sanhao
         \departmentpre &
         \sanhao\fs
-        \underline{\makebox[9.5em][s]{\makebox[9.5em][c]{\@major}}} &
+        \underline{\makebox[\@majorlen][s]{\makebox[\@majorlen][c]{\@major}}} &
         \sanhao \majorpre \\
       \end{tabular}
 
@@ -536,8 +575,8 @@ BoldItalicFont=timesbi.ttf
         \sanhao\addresspre\quad\underline{\makebox[20em][s]{
             \makebox[20em][c]{\fs{\@address}}}} \\
       \end{tabular}
-      %\vfill
-      %{\sanhao\today \par}
+      \vfill
+      {\sanhao\today \par}
     \end{center}
   \end{titlepage}
 }
@@ -593,22 +632,18 @@ BoldItalicFont=timesbi.ttf
   \addcontentsline{toc}{chapter}{\@abstracttitletoc}
   \ifbachelordegree
   \renewcommand{\newtitleline}{\\}
-  %\chapter*{\@title}
-
-  %\begin{flushright}
-  %  \begin{tabular}[h]{ll}
-  %    \@studentid & \kai\@author \\
-  %    \advisorpre & \kai\@advisorname \\
-  %  \end{tabular}
-  %\end{flushright}
-  \vspace*{30pt}
-
+  % \chapter*{\@title}
+  % \begin{flushright}
+  %   \begin{tabular}[h]{ll}
+  %     \@studentid & \kai\@author \\
+  %     \advisorpre & \kai\@advisorname \\
+  %   \end{tabular}
+  % \end{flushright}
+  \ \\ \\
   \begin{center}
-    \huge \hei\@abstracttitle
+    \Large \hei\@abstracttitle
   \end{center}
-  \vspace*{30pt}
-
-  \par
+  \par \ \\ \par
   \else
   \chapter*{\@abstracttitle}
   \fi
@@ -619,6 +654,8 @@ BoldItalicFont=timesbi.ttf
   \wuhao
   \fi
 }{
+  % \\ \\
+  % 关键词： \@keywords
   \par
   \begin{description}
   \item[关键词：] \@keywords
@@ -626,18 +663,24 @@ BoldItalicFont=timesbi.ttf
 }
 \newenvironment{englishabstract}[1]
 {
+  %\pagestyle{seustyle}
   \newcommand{\@keywords}{#1}
   \stcleardp
   \phantomsection
   \addcontentsline{toc}{chapter}{Abstract}
   \ifbachelordegree
-
-  \vspace*{30pt}
+  % \chapter*{\@titleeng}
+  % \begin{flushright}
+  %   \begin{tabular}[h]{l}
+  %     \@studentid \qquad \@authoreng \\
+  %     \@advisornameeng \\
+  %   \end{tabular}
+  % \end{flushright}
+  \ \\ \\
   \begin{center}
-    {\huge Abstract}
+    {\Large Abstract}
   \end{center}
-  \vspace*{30pt}
-  \par
+  \par \ \\ \par
   \else
   \chapter*{Abstract}
   \fi
@@ -648,9 +691,11 @@ BoldItalicFont=timesbi.ttf
   \wuhao
   \fi
 }{
+  % \\ \\
+  % Keywords: \@keywords
   \par
   \begin{description}
-  \item[KEY WORDS:] \@keywords
+  \item[Keywords:] \@keywords
   \end{description}
 }
 \let\tableofcontents@orig=\tableofcontents
@@ -660,7 +705,8 @@ BoldItalicFont=timesbi.ttf
   {\linespacing{1.15}%
   \song\xiaosihao%
   \phantomsection
-  \pagestyle{seunolabelstyle}
+  %\renewpagestyle{plain}{\pagestyle{seunolabelstyle}}
+  %\pagestyle{seunolabelstyle}
   \tableofcontents@orig \par
   \clearpage} %目录部分字体可采用小四号宋体。
   \renewpagestyle{plain}{\pagestyle{seustyle}}
@@ -693,8 +739,7 @@ BoldItalicFont=timesbi.ttf
 \renewcommand{\cite}[1]{\textsuperscript{\originalcite{#1}}}
 \renewcommand{\citet}[1]{\originalcite{#1}}
 \bibliographystyle{seuthesis}
-% my change
-%\renewcommand\@biblabel[1]{#1}  % Reference list option change from [1] to 1
+\renewcommand\@biblabel[1]{#1}  % Reference list option change from [1] to 1
 \let\orig@bibliography=\bibliography
 \renewcommand{\bibliography}[1]{
   \orig@bibliography{#1}
